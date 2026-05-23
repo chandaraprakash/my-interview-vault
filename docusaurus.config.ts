@@ -15,14 +15,14 @@ const config: Config = {
   },
 
   // Set the production url of your site here
-  url: 'https://your-github-username.github.io',
+  url: 'https://chandaraprakash.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/',
+  baseUrl: '/my-interview-vault/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'your-github-username',
+  organizationName: 'chandaraprakash',
   projectName: 'my-interview-vault',
 
   onBrokenLinks: 'throw',
@@ -42,7 +42,7 @@ const config: Config = {
         docs: {
           sidebarPath: './sidebars.ts',
           editUrl:
-            'https://github.com/your-github-username/my-interview-vault/tree/main/',
+            'https://github.com/chandaraprakash/my-interview-vault/tree/main/',
         },
         blog: false,
         theme: {
@@ -71,7 +71,7 @@ const config: Config = {
           label: 'Vault',
         },
         {
-          href: 'https://github.com/your-github-username/my-interview-vault',
+          href: 'https://github.com/chandaraprakash/my-interview-vault',
           label: 'GitHub',
           position: 'right',
         },
@@ -102,11 +102,11 @@ const config: Config = {
           items: [
             {
               label: 'Edit on GitHub',
-              href: 'https://github.com/your-github-username/my-interview-vault',
+              href: 'https://github.com/chandaraprakash/my-interview-vault',
             },
             {
               label: 'Contribution guide',
-              href: 'https://github.com/your-github-username/my-interview-vault/blob/main/CONTRIBUTING.md',
+              href: 'https://github.com/chandaraprakash/my-interview-vault/blob/main/CONTRIBUTING.md',
             },
           ],
         },
@@ -115,7 +115,7 @@ const config: Config = {
           items: [
             {
               label: 'GitHub',
-              href: 'https://github.com/your-github-username/my-interview-vault',
+              href: 'https://github.com/chandaraprakash/my-interview-vault',
             },
           ],
         },
