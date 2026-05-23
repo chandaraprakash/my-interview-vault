@@ -1,0 +1,8 @@
+{
+  "label": "System Design",
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "description": "Architecture concepts, scalability tradeoffs, and design prompts."
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "label": "Coding Practice",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "description": "Problem-solving patterns, worked examples, and complexity notes."
+  }
+}
