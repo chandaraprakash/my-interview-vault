@@ -1,0 +1,354 @@
+<!doctype html><html lang=en dir=ltr class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-data-structures/bit-manipulation" data-has-hydrated=false><head><meta charset=UTF-8><meta name=generator content="Docusaurus v3.10.1"><title data-rh=true>Bit Manipulation | My Interview Vault</title><meta data-rh=true name=viewport content="width=device-width, initial-scale=1.0"/><meta data-rh=true name=twitter:card content=summary_large_image /><meta data-rh=true property=og:image content=https://chandaraprakash.github.io/my-interview-vault/img/logo.png /><meta data-rh=true name=twitter:image content=https://chandaraprakash.github.io/my-interview-vault/img/logo.png /><meta data-rh=true property=og:url content=https://chandaraprakash.github.io/my-interview-vault/docs/data-structures/bit-manipulation /><meta data-rh=true property=og:locale content=en /><meta data-rh=true name=docusaurus_locale content=en /><meta data-rh=true name=docsearch:language content=en /><meta data-rh=true name=docusaurus_version content=current /><meta data-rh=true name=docusaurus_tag content=docs-default-current /><meta data-rh=true name=docsearch:version content=current /><meta data-rh=true name=docsearch:docusaurus_tag content=docs-default-current /><meta data-rh=true property=og:title content="Bit Manipulation | My Interview Vault"/><meta data-rh=true name=description content="Bit manipulation is an essential technique to optimize time and space complexity in competitive coding and technical interviews."/><meta data-rh=true property=og:description content="Bit manipulation is an essential technique to optimize time and space complexity in competitive coding and technical interviews."/><link data-rh=true rel=icon href=/my-interview-vault/img/favicon.ico /><link data-rh=true rel=canonical href=https://chandaraprakash.github.io/my-interview-vault/docs/data-structures/bit-manipulation /><link data-rh=true rel=alternate href=https://chandaraprakash.github.io/my-interview-vault/docs/data-structures/bit-manipulation hreflang=en /><link data-rh=true rel=alternate href=https://chandaraprakash.github.io/my-interview-vault/docs/data-structures/bit-manipulation hreflang=x-default /><script data-rh=true type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://chandaraprakash.github.io/my-interview-vault/docs/category/data-structures","name":"Data Structures","position":1},{"@type":"ListItem","item":"https://chandaraprakash.github.io/my-interview-vault/docs/data-structures/bit-manipulation","name":"Bit Manipulation","position":2}]}</script><link rel=preconnect href=https://www.google-analytics.com><link rel=preconnect href=https://www.googletagmanager.com><script async src="https://www.googletagmanager.com/gtag/js?id=G-TLPZNJWN0M"></script><script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-TLPZNJWN0M",{anonymize_ip:!0})</script><link rel=stylesheet href=/my-interview-vault/assets/css/styles.a9d5d1b5.css /><script src=/my-interview-vault/assets/js/runtime~main.bc59d7f6.js defer></script><script src=/my-interview-vault/assets/js/main.5e085ea1.js defer></script></head><body><svg style="display: none;"><defs>
+<symbol id=theme-svg-external-link viewBox="0 0 24 24"><path fill=currentColor d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme-60e")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")),document.documentElement.setAttribute("data-theme-choice",t||"system")}(),function(){try{for(var[t,e]of new URLSearchParams(window.location.search).entries())if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id=__docusaurus><link rel=preload as=image href=/my-interview-vault/img/logo.png /><div role=region aria-label="Skip to main content"><a class=skipToContent_fXgn href=#__docusaurus_skipToContent_fallback>Skip to main content</a></div><nav aria-label=Main class="theme-layout-navbar navbar navbar--fixed-top"><div class=navbar__inner><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded=false class="navbar__toggle clean-btn" type=button><svg width=30 height=30 viewBox="0 0 30 30" aria-hidden=true><path stroke=currentColor stroke-linecap=round stroke-miterlimit=10 stroke-width=2 d="M4 7h22M4 15h22M4 23h22"/></svg></button><a class=navbar__brand href=/my-interview-vault/><div class=navbar__logo><img src=/my-interview-vault/img/logo.png alt="My Interview Vault Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"/><img src=/my-interview-vault/img/logo.png alt="My Interview Vault Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"/></div><b class="navbar__title text--truncate">My Interview Vault</b></a><a aria-current=page class="navbar__item navbar__link navbar__link--active" href=/my-interview-vault/docs/intro>Vault</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href=https://github.com/chandaraprakash/my-interview-vault target=_blank rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type=button disabled title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill=currentColor d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"/></svg><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill=currentColor d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"/></svg><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill=currentColor d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"/></svg></button></div><div class=navbarSearchContainer_Bca1></div></div></div><div role=presentation class=navbar-sidebar__backdrop></div></nav><div id=__docusaurus_skipToContent_fallback class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class=docsWrapper_hBAB><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type=button></button><div class=docRoot_UBD9><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class=sidebarViewport_aRkj><div class=sidebar_njMd><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class=menu__link href=/my-interview-vault/docs/intro><span title="My Interview Vault" class=linkLabel_WmDU>My Interview Vault</span></a><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--active" href=/my-interview-vault/docs/category/data-structures><span title="Data Structures" class=categoryLinkLabel_W154>Data Structures</span></a><button aria-label="Collapse sidebar category 'Data Structures'" aria-expanded=true type=button class="clean-btn menu__caret"></button></div><ul class=menu__list><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class=menu__link tabindex=0 href=/my-interview-vault/docs/data-structures/><span title="Data Structures Overview" class=linkLabel_WmDU>Data Structures Overview</span></a><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class=menu__link tabindex=0 href=/my-interview-vault/docs/data-structures/concepts><span title="Concepts Checklist" class=linkLabel_WmDU>Concepts Checklist</span></a><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class=menu__link tabindex=0 href=/my-interview-vault/docs/data-structures/big-o-cheat-sheet><span title="Big-O Cheat Sheet" class=linkLabel_WmDU>Big-O Cheat Sheet</span></a><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current=page tabindex=0 href=/my-interview-vault/docs/data-structures/bit-manipulation><span title="Bit Manipulation" class=linkLabel_WmDU>Bit Manipulation</span></a><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class=menu__link tabindex=0 href=/my-interview-vault/docs/data-structures/graphs><span title=Graphs class=linkLabel_WmDU>Graphs</span></a><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class=menu__link tabindex=0 href=/my-interview-vault/docs/data-structures/blind-top-75><span title="Blind Top 75" class=linkLabel_WmDU>Blind Top 75</span></a><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class=menu__link tabindex=0 href=/my-interview-vault/docs/data-structures/resources-links><span title="Important Links" class=linkLabel_WmDU>Important Links</span></a><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class=menu__link tabindex=0 href=/my-interview-vault/docs/data-structures/youtube-books><span title="YouTube & Books" class=linkLabel_WmDU>YouTube & Books</span></a></ul><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist" href=/my-interview-vault/docs/category/system-design><span title="System Design" class=categoryLinkLabel_W154>System Design</span></a><button aria-label="Expand sidebar category 'System Design'" aria-expanded=false type=button class="clean-btn menu__caret"></button></div><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist" href=/my-interview-vault/docs/category/behavioral-prep><span title="Behavioral Prep" class=categoryLinkLabel_W154>Behavioral Prep</span></a><button aria-label="Expand sidebar category 'Behavioral Prep'" aria-expanded=false type=button class="clean-btn menu__caret"></button></div><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist" href=/my-interview-vault/docs/category/ai-ml><span title=AI/ML class=categoryLinkLabel_W154>AI/ML</span></a><button aria-label="Expand sidebar category 'AI/ML'" aria-expanded=false type=button class="clean-btn menu__caret"></button></div><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class=menu__link href=/my-interview-vault/docs/contribute><span title=Contribute class=linkLabel_WmDU>Contribute</span></a><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist" href=/my-interview-vault/docs/category/tpm><span title=TPM class=categoryLinkLabel_W154>TPM</span></a><button aria-label="Expand sidebar category 'TPM'" aria-expanded=false type=button class="clean-btn menu__caret"></button></div><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist" href=/my-interview-vault/docs/category/interview-and-beyond><span title="Interview and Beyond" class=categoryLinkLabel_W154>Interview and Beyond</span></a><button aria-label="Expand sidebar category 'Interview and Beyond'" aria-expanded=false type=button class="clean-btn menu__caret"></button></div></ul></nav></div></div></aside><main class=docMainContainer_TBSr><div class="container padding-top--md padding-bottom--lg"><div class=row><div class="col docItemCol_VOVn"><div class=docItemContainer_Djhp><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label=Breadcrumbs><ul class=breadcrumbs><li class=breadcrumbs__item><a aria-label="Home page" class=breadcrumbs__link href=/my-interview-vault/><svg viewBox="0 0 24 24" class=breadcrumbHomeIcon_YNFT><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill=currentColor /></svg></a><li class=breadcrumbs__item><a class=breadcrumbs__link href=/my-interview-vault/docs/category/data-structures><span>Data Structures</span></a><li class="breadcrumbs__item breadcrumbs__item--active"><span class=breadcrumbs__link>Bit Manipulation</span></ul></nav><div class="theme-doc-markdown markdown"><header><h1>Bit Manipulation Guide</h1></header>
+<p>Bit manipulation is an essential technique to optimize time and space complexity in competitive coding and technical interviews.</p>
+<p>n competitive coding or a live coding round it is very important to write the code which is time and space optimised. BIT MANIPULATION is the very important topic, the code written by using bit concepts / tricks / hacks is reliable and fast in execution if we talk about competitive coding it provide us a lot of advantage.</p>
+<p>SUPPOSE AN EXAMPLE OF CHECKING WHETHER A NUMBER IS POWER OF 2 or NOT :-</p>
+<p>There are a lot of ways to solve it</p>
+<p>BY USING CEIL() AND FLOOR() :-
+Time complexity :- O(log2(n))
+Space complexity :- O(1)</p>
+<p>BY USING % and / OPERATOR :-
+Time complexity :- O(log2(n))
+Space complexity :- O(1)</p>
+<p>BY USING BIT MANIPULATION :-
+Time complexity :- O(1)
+Space complexity :- O(1)</p>
+<p>So from the above example we can see that how BIT MANIPULATION tricks reduces the time complexity. There are lot of problems which can be solved in a lot of ways but selecting the best way is the identity of a good coder.</p>
+<p>BIT MANIPULATION covers approx 4% of leetcode problems. In this article we will see all about BIT MANIPULATION and some cool bit manipulation tips / hacks and tricks (which we can apply in our coding) with proper and detailed explanation with example.</p>
+<p>NOTE :- IN EACH HACK I HAVE DEFINED HOW A PARTICULAR TRICK IS WORKING WITH PROPER TIME COMPLEXITIES. NO NEED TO MEMORISE ANYTHING.</p>
+<p>CONTENT OF THIS ARTICLE</p>
+<ol>
+<li class="">BASIC BITS OPERATORS.</li>
+<li class="">BITS HACKS / TRICKS WITH DETAILED EXPLANATION AND COMPLEXITY.</li>
+<li class="">MOSTLY ASKED FILTERED QUESTIONS ACCORDING TO LEETCODE.</li>
+<li class="">INTERVIEW RELATED QUESTIONS.</li>
+</ol>
+<p>PART 1 :- BASIC BITS OPERATORS</p>
+<p>There are basically 6 type of operators which we can use over bits.</p>
+<p>BITWISE AND (&) operator : It is a binary operator. It takes two numbers as an operands. The result of AND is 1 only if both bits are 1. otherwise 0.
+BITWISE OR (|) operator : It is a binary operator. It takes two numbers as an operands. The result of OR is 0 only if both bits are 0. otherwise 1.
+BITWISE XOR (^) operator : It is a binary operator. It takes two numbers as an operands. The result of XOR is 1 only if two bits are different. otherwise 0.
+BITWISE LEFT SHIFT (&lt;&lt;) operator : It is a binary operator. The left shift operator (&lt;&lt;) shifts the first operand the specified number of bits to the left. Excess bits shifted off to the left are discarded. Left shift is equivalent to multiplying the bit pattern with pow(2,k) ( if we are shifting k bits ).
+1 &lt;&lt; 1 = 2 = pow(2,1) = (00010)
+1 &lt;&lt; 2 = 4 = pow(2,2) = (00100)
+1 &lt;&lt; 3 = 8 = pow(2,3) = (01000)
+1 &lt;&lt; 4 = 16 = pow(2,4) = (10000)
+…
+1 &lt;&lt; n = pow(2,n)</p>
+<p>Note - (2 ^ 31 - 1) &lt;&lt; 1 = INT_MAX &lt;&lt; 1 = INT overflow</p>
+<p>-8 &lt;&lt; 1 = 2's compliment of 8 &lt;&lt; 1 = invert all bits of 8 + 1 &lt;&lt; 1
+0000 1000 = 1111 0111 = 1111 1000 &lt;&lt; 1 = 1111 0000 = -16 = -8 * pow(2,1)</p>
+<p>BITWISE RIGHT SHIFT (>>) operator : It is a binary operator. The right shift operator (>>) shifts the first operand the specified number of bits to the right. Excess bits shifted off to the right are discarded. Right shift is equivalent to dividing the bit pattern with pow(2,k) ( if we are shifting k bits ).
+4 >> 1 = 4/pow(2,1) = 2
+6 >> 1 = 6/pow(2,1) = 3
+5 >> 1 = 5/pow(2,1) = 2
+16 >> 4 = 16/pow(2,4) = 1</p>
+<p>-8 >> 1 = 0000 1000 = 1111 0111 = 1111 1000 >> 1 = 1111 1100 = -4 = -8 / pow(2,1) but -7 >> 1 = -4 = -7 / pow(2,1) = -7 / 2 = - 3.5 always round off to next = -4</p>
+<p>BITWISE NOT (~) operator : It is a unary operator. It takes one number and inverts all bits of it.</p>
+<p>image</p>
+<p>steps to perform this - in case of negative always do 2's complete then perform these operations
+1 invert all bits
+2 check -ve - yes 2's compliment else stop
+~(5) - 0000 0101 = 1111 1010 = its nwgative - convert to 2's comp
+1000 101 = -6 = ~x = -(x+1)
+~(-6) - 0000 0110 = 1111 1001 + 1 = 1111 1010 - flip = 0000 0101 = 5
+~(-x) = - (x + 1) = 5</p>
+<p>NOTE :- The left shift and right shift operators should not be used for negative numbers.</p>
+<p>PART 2 :- BITS HACKS AND TRICKS WITH PROPER APPROACH AND COMPLEXITIES</p>
+<p>BITS HACKS AND TRICKS :</p>
+<p>Multiplication by power of 2. ✨🎩
+Division by power of 2. ✨🎩
+To check number is odd or even? ✨🎩
+Swapping of 2 numbers. ✨🎩
+To check ith bit is set or not of a number. ✨🎩
+To flip ith bit of a number. ✨🎩
+To turn on ith bit of a number. ✨🎩
+To turn off ith bit of a number. ✨🎩
+To check if a number is the power of 2 or not. ✨🎩
+Upper case letter to lower case letter. ✨🎩
+Lower case letter to upper case letter. ✨🎩
+To find min/max of two numbers ✨🎩
+Count all set bits of a Number ✨🎩
+Count leading zeros ✨🎩
+Count trailing zeros ✨🎩
+Remove Last Set Bit Rightmost ✨🎩</p>
+<ol>
+<li class="">
+<p>MULTIPLICATION BY POWER OF 2 :-</p>
+<p>num = num &lt;&lt; i;    //multiplication  by pow(2,i)
+Approach :-
+suppose an example</p>
+</li>
+</ol>
+<p>5= 101(binary)
+5<em>pow(2,1)=10 = 1010 (shifed all bits one position to left if we compare with 101)=5&lt;&lt;1 (left shift by 1)
+5</em>pow(2,2)=20 = 10100 (shifted all bits two position to left if we compare with 101 )=5&lt;&lt;2 (left shift by 2)
+TIME COMPLEXITY O(1)</p>
+<ol start=2>
+<li class="">
+<p>DIVISION BY POWER OF 2 :-</p>
+<p>num = num >> i;  //division by pow(2,i)
+Approach :-
+suppose an example</p>
+</li>
+</ol>
+<p>8= 1000(binary)
+8/pow(2,1)=4 = 0100 (shifed all bits one position to right if we compare with 1000)=8>>1 (right shift by 1)
+8/pow(2,2)=2 = 0010 (shifted all bits two position to right if we compare with 1000 )=8>>2 (right shift by 2)
+TIME COMPLEXITY O(1)</p>
+<ol start=3>
+<li class="">
+<p>TO CHECK WHETHER NUMBER IS ODD OR EVEN :-</p>
+<p>if((num & 1) == 0)
+cout &lt;&lt; "Even number";<br/>
+<!-- -->else
+cout &lt;&lt; "Odd number";<br/>
+<!-- -->Approach :-</p>
+</li>
+</ol>
+<p>9=(1001)
+11=(1011)
+99=(1100011)
+From the above figures we can easily figure out that the right most bit of odd number is 1
+So if we perform & with odd number we got 1. 1001 & 0001 = 0001
+And if we perform & with even number we got 0 1000 & 0001 = 0000
+TIME COMPLEXITY O(1)</p>
+<ol start=4>
+<li class="">
+<p>TO SWAP TWO NUMBERS :-</p>
+<p>x = x ^ y;
+y = x ^ y;
+x = x ^ y;
+Approach :-</p>
+</li>
+</ol>
+<p>x = x ^ y -------------------------- eq. 1
+y = x ^ y --------------------------eq. 2
+x = x ^ y ---------------------------eq. 3
+put the value of x from eq. 1 to eq. 2 we got
+y = (x ^ y) ^ y = x ^ (y ^ y) = x ^ 0 = x ..... we got y = x ----------eq 4
+put the value of y from eq. 4 and x from eq. 1 to eq. 3 we got
+x = (x ^ y) ^ x = (x ^ x) ^ y = 0 ^ y = y ...... we got x = y -----------eq 5
+according to eq 4 and eq 5
+y = x
+x = y
+hence x and y are swapped
+TIME COMPLEXITY O(1)</p>
+<p>NOTE :- there are a lot of cons of using xor for swapping. Avoid this technique if x and y are pointers or references to objects, and both point to the same location.
+In some instances it may work slower than the swapping by using third value.</p>
+<ol start=5>
+<li class="">
+<p>TO CHECK ith BIT IS SET OR NOT OF A NUMBER :-</p>
+<p>x = num & (1 &lt;&lt; (i-1));
+if(x) cout&lt;&lt;"set"&lt;&lt;endl;
+else cout&lt;&lt;"not set"&lt;&lt;endl;
+x = 1 & (num >> (i-1));
+if(x) cout&lt;&lt;"set"&lt;&lt;endl;
+else cout&lt;&lt;"not set"&lt;&lt;endl;
+Approach :-</p>
+</li>
+</ol>
+<p>suppose we want to check the second bit of 10 (1010) which is 1 (bits counting always start from right )
+10 & (1&lt;&lt;1)
+so 1&lt;&lt;1 corresponds to 1*pow(2,1)=2=0010(binary)
+10 & 2
+1010 & 0010 = 2 if we get non zero no. means ith bit is set so here we got 2 means our ith means 2nd bit is set.
+TIME COMPLEXITY O(1)</p>
+<ol start=6>
+<li class="">
+<p>TO FLIP ith BIT OF A NUMBER :-</p>
+<p>x = num ^ (1 &lt;&lt; (i-1));
+Approach :-</p>
+</li>
+</ol>
+<p>suppose we want to flip the second bit of 10 (1010) 1 to 0 (bits counting always start from right )
+10 ^ (1&lt;&lt;1)
+so 1&lt;&lt;1 corresponds to 1*pow(2,1)=2=0010(binary)
+10 ^ 2
+1010 ^ 0010 = 1000 and here in both operand our second bit is 1 and according to ^ properties when two bits are same then resultant is 0 so in this way second bit of 10 flips to 0 from 1.
+TIME COMPLEXITY O(1)</p>
+<ol start=7>
+<li class="">
+<p>TO TURN ON ith BIT OF A NUMBER :-</p>
+<p>x = num | (1 &lt;&lt; (i-1));
+Approach :-</p>
+</li>
+</ol>
+<p>suppose we want to turn on the first bit of 10 (1010) (bits counting always start from right )
+10 | (1&lt;&lt;0)
+so 1&lt;&lt;0 corresponds to 1*pow(2,0)=1=0001(binary)
+10 | 1
+1010 | 0001 = 1011 so here if we notice we found that (i&lt;&lt;(i-1)) part set a bit to 1 at the ith place and if we perform | with the num then we get 1 everytime at the ith position in the num due to the | property. because when we | any bit with 1 then we got 1.
+TIME COMPLEXITY O(1)</p>
+<ol start=8>
+<li class="">
+<p>TO TURN OFF ith BIT OF A NUMBER :-</p>
+<p>x = num & ~(1 &lt;&lt; (i-1));
+Approach :-</p>
+</li>
+</ol>
+<p>Same as above one try to understand by yourself
+TIME COMPLEXITY O(1)</p>
+<ol start=9>
+<li class="">
+<p>TO CHECK IF A NUMBER IS POWER OF 2 OR NOT :-</p>
+<p>x = num & (num - 1);
+if(!x) cout&lt;&lt;"power of 2"&lt;&lt;endl;
+else cout&lt;&lt;"not a power of 2"&lt;&lt;endl;
+Approach :-</p>
+</li>
+</ol>
+<p>8=(1000) , 7=(0111)
+16=(10000), 15=(01111)
+32=(100000), 31=(011111)
+from the above cases we can easily notice that , the number which is power of 2 (say n) has only one bit set.
+and for n-1 all the bits are set except the one which is set in the n. because Subtracting 1 from a decimal number flips all the bits after the rightmost set bit(which is 1) including the rightmost set bit.
+so if we perform n&(n-1)
+n=8 , 1000 & 0111 we got 0 in case of power of 2 otherwise 1
+TIME COMPLEXITY O(1)</p>
+<ol start=10>
+<li class="">
+<p>TO CONVERT UPPERCASE TO LOWERCASE LETTER :-</p>
+<p>ch = ch | ' ';
+Approach :-</p>
+</li>
+</ol>
+<p>The difference between the ASCII value of a lower case letter and its corresponding upper case letter is 32 and 32 is the ASCII value of ‘ ’ (space).
+So if we notice that for converting A (65) to a(97) so for this we have to set the fifth bit of A. after setting the fifth bit we got 65+32=97 (a).
+By the help of | operator we can set the fifth bit.
+TIME COMPLEXITY O(1)</p>
+<ol start=11>
+<li class="">
+<p>TO CONVERT LOWERCASE LETTER TO UPPERCASE LETTER :-</p>
+<p>ch = ch & '_';
+Approach :-</p>
+</li>
+</ol>
+<p>we have just need to off the 5th bit of lowercase letter to convert it into upper case.
+NOTE:-</p>
+<p>//for both lower to upper and upper to lower.
+ch = ch ^ (1 &lt;&lt; 5)
+TIME COMPLEXITY O(1)</p>
+<ol start=12>
+<li class="">
+<p>TO FIND MIN MAX OF TWO NUMBERS :-</p>
+<p>minimum = y ^ ((x ^ y) & -(x &lt; y)); // min(x, y)</p>
+<p>maximum = x ^ ((x ^ y) & -(x &lt; y)); // max(x, y)
+Approach :-</p>
+</li>
+</ol>
+<p>if x &lt; y holds, then -(x &lt; y) will be -1 which is all ones(11111….)
+so minimum = y ^ ((x ^ y) & (111111…)) = y ^ x ^ y = x.
+And if x>y holds , then-(x&lt;y) will be -(0) i.e -(zero) which is zero
+so maximum = x^((x^y) & 0) = x^0 = x.
+TIME COMPLEXITY O(1)</p>
+<ol start=13>
+<li class="">
+<p>TO COUNT ALL SET BITS OF AN NUMBER :-</p>
+<p>int count = 0;
+while (num) {
+num &= (num - 1);
+count++;
+}
+return count;</p>
+<p>//or</p>
+<p>cout&lt;&lt; __builtin_popcount(num) ;
+Approach :-</p>
+</li>
+</ol>
+<p>Subtracting 1 from a decimal number flips all the bits after the rightmost set bit(which is 1) including the rightmost set bit.
+for example : 10 in binary is 00001010, 9 in binary is 00001001
+So if we subtract a number by 1 and do bitwise & with itself (n & (n-1)), we unset the rightmost set bit. If we do n & (n-1) in a loop and count the no of times loop executes we get the set bit count.
+TIME COMPLEXITY O(k) k is the number of 1s</p>
+<ol start=14>
+<li class="">TO COUNT LEADING ZEROS :-</li>
+</ol>
+<p>int count_zeros(int num)
+{
+unsigned y;
+int n = 32;
+y = num >> 16;
+if (y != 0) {
+n = n - 16;
+num = y;
+}
+y = num >> 8;
+if (y != 0) {
+n = n - 8;
+num = y;
+}
+y = num >> 4;
+if (y != 0) {
+n = n - 4;
+num = y;
+}
+y = num >> 2;
+if (y != 0) {
+n = n - 2;
+num = y;
+}
+y = num>> 1;
+if (y != 0)
+return n - 2;
+return n - num;
+}</p>
+<p>// or</p>
+<p>__builtin_clz (x)
+Approach :-</p>
+<p>The approach of this one is very simple.
+we have to simply divide the number if our number is suppose that >= 16 so it is confirmed that the number will require more than 4 bits because by using 4 bits we can create a number in the range 0 to 15.
+so each time we are dividing the number ith power of 2 (num>>i) if we got quotient(y) !=0 means digits will atleast required i bits so we are substracting the i bits from our 32 bits sets.
+update num, num=y and repeat.
+EXAMPLE :- num=16, 16>>4 we got y=1, ans=32-4=28.....then our num will be updated to num=y=1; num=1 ,1>>2 we got y==0, for 1>>1 we got 0 again so return ans-num=28-1 return 27
+TIME COMPLEXITY O(1)</p>
+<ol start=15>
+<li class="">TO COUNT TRAILING ZEROS :-</li>
+</ol>
+<p>int count = 0;
+while ((x & 1) == 0)
+{
+x = x >> 1;
+count++;
+}
+return count;</p>
+<p>// or</p>
+<p>__builtin_ctz (x)
+Approach :-</p>
+<p>just traversing bits from LSB (Least Significant Bit) and increment count while bit is 0.
+16. Remove Last Set Bit Rightmost :-</p>
+<p>x & (x - 1)
+Approach :-</p>
+<p>x = 8 = 0000 1000, 7 = 0000 0111, 8 & 7 = 0000 0000
+PART 3 :- FILTERED PROBLEMS ACCORDING TO LEETCODE</p>
+<p>MOSTLY ASKED BIT MANIPULATION PROBLEMS :- (Follow the order)</p>
+<ol start=1178>
+<li class="">Number of Valid Words for Each Puzzle</li>
+<li class="">Subsets</li>
+<li class="">Majority Element</li>
+<li class="">Maximum Length of a Concatenated String with Unique Characters</li>
+<li class="">UTF-8 Validation</li>
+<li class="">Repeated DNA Sequences</li>
+<li class="">Minimum One Bit Operations to Make Integers Zero</li>
+<li class="">Sum of Two Integers</li>
+<li class="">Missing Number</li>
+<li class="">Convert Binary Number in a Linked List to Integer</li>
+</ol>
+<p>PART 4 :- INTERVIEW QUESTIONS</p>
+<p>THE MAGICS WHICH WE CAN DO BY USING BIT HACKS | INTERVIEW QUESTIONS:-</p>
+<p>Find the missing number in an array without using any extra space ✨🎩
+Compute modulus division without division and modulo operator ✨🎩
+Reverse bits of an integer ✨🎩
+Find the odd occurring element in an array ✨🎩
+Swap adjacent bits of a number ✨🎩
+Print all distinct subsets of a given set ✨🎩
+Swap two bits at a given position in an integer ✨🎩
+Add binary representation of two integers ✨🎩
+Find two duplicate elements in a limited range array (using XOR) ✨🎩
+Generate binary numbers between 1 to n ✨🎩
+Find the missing number and duplicate elements in an array ✨🎩
+Round up to the previous power of 2 ✨🎩
+Round up to the next highest power of 2 ✨🎩
+Find XOR of two numbers without using the XOR operator ✨🎩
+Detect if two integers have opposite signs or not ✨🎩</div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col noPrint_WFHX"><a href=https://github.com/chandaraprakash/my-interview-vault/tree/main/docs/data-structures/bit-manipulation.mdx target=_blank rel="noopener noreferrer" class=theme-edit-this-page><svg fill=currentColor height=20 width=20 viewBox="0 0 40 40" class=iconEdit_Z9Sw aria-hidden=true><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"/></g></svg>Edit this page</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href=/my-interview-vault/docs/data-structures/big-o-cheat-sheet><div class=pagination-nav__sublabel>Previous</div><div class=pagination-nav__label>Big-O Cheat Sheet</div></a><a class="pagination-nav__link pagination-nav__link--next" href=/my-interview-vault/docs/data-structures/graphs><div class=pagination-nav__sublabel>Next</div><div class=pagination-nav__label>Graphs</div></a></nav></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class=footer__title>Docs</div><ul class="footer__items clean-list"><li class=footer__item><a class=footer__link-item href=/my-interview-vault/docs/intro>Start here</a><li class=footer__item><a class=footer__link-item href=/my-interview-vault/docs/category/data-structures>Data Structures</a><li class=footer__item><a class=footer__link-item href=/my-interview-vault/docs/category/system-design>System Design</a><li class=footer__item><a class=footer__link-item href=/my-interview-vault/docs/category/behavioral-prep>Behavioral Prep</a><li class=footer__item><a class=footer__link-item href=/my-interview-vault/docs/category/ai-ml>AI/ML</a><li class=footer__item><a class=footer__link-item href=/my-interview-vault/docs/category/tpm>TPM</a><li class=footer__item><a class=footer__link-item href=/my-interview-vault/docs/category/interview-and-beyond>Interview and Beyond</a></ul></div><div class="theme-layout-footer-column col footer__col"><div class=footer__title>Contribute</div><ul class="footer__items clean-list"><li class=footer__item><a href=https://github.com/chandaraprakash/my-interview-vault target=_blank rel="noopener noreferrer" class=footer__link-item>Edit on GitHub<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a><li class=footer__item><a href=https://github.com/chandaraprakash/my-interview-vault/blob/main/CONTRIBUTING.md target=_blank rel="noopener noreferrer" class=footer__link-item>Contribution guide<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a></ul></div><div class="theme-layout-footer-column col footer__col"><div class=footer__title>Project</div><ul class="footer__items clean-list"><li class=footer__item><a href=https://github.com/chandaraprakash/my-interview-vault target=_blank rel="noopener noreferrer" class=footer__link-item>GitHub<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a></ul></div></div><div class="footer__bottom text--center"><div class=footer__copyright>Copyright © 2026 My Interview Vault contributors. Built with Docusaurus.</div></div></div></footer></div></body>
