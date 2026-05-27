@@ -1,0 +1,9 @@
+{
+  "label": "Data Structures",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "slug": "/category/data-structures",
+    "description": "Basic and advanced data structures, traversal algorithms, and complexity cheat sheets."
+  }
+}

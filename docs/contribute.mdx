@@ -4,23 +4,38 @@ sidebar_position: 5
 
 # Contribute
 
-This project follows a docs-as-code workflow.
+Thank you for helping improve **My Interview Vault**! We welcome content contributions, topic updates, and new guides.
 
-## Contribution flow
+---
 
-1. Fork the GitHub repository.
-2. Create a branch for your change.
-3. Edit or add a Markdown file under `docs/`.
-4. Run the site locally and check formatting.
-5. Open a pull request.
+## 🚀 Quick Submission (No Forking Required)
 
-Your change is invisible on the live site until a maintainer reviews and merges
-the pull request.
+If you have a single guide, problem template, or reference checklist to submit, you can use our automated form:
 
-## Content guidelines
+> [!TIP]
+> **No Git knowledge required!** Just fill out the form with your document title, choose a category, paste your content, and submit. Our backend pipeline will automatically parse it, format it for Docusaurus, and create a draft Pull Request for review.
+>
+> [👉 Submit a Contribution via GitHub Form](https://github.com/chandaraprakash/my-interview-vault/issues/new?template=submit-contribution.yml)
 
-- Keep examples practical and interview-focused.
-- Prefer explanations, tradeoffs, and common mistakes over long link lists.
-- Add source links when a fact depends on a specific external reference.
-- Use headings, bullets, and code blocks so pages are easy to scan.
-- Keep each page focused on one topic.
+---
+
+## 🛠️ Advanced Docs-as-Code Workflow
+
+For making edits to existing files, bulk additions, or changes to site layouts, follow our manual PR flow:
+
+1. **Fork** the repository: [github.com/chandaraprakash/my-interview-vault](https://github.com/chandaraprakash/my-interview-vault).
+2. **Create a branch** for your feature or change: `git checkout -b feature/your-topic`.
+3. **Add or modify** Markdown files inside the [docs/](file:///Users/kcp/Documents/work/my-interview-vault/docs/) directory.
+4. **Test locally** using `npm run dev` or `npm run build` to verify formatting and routing.
+5. **Commit and push** your changes, then open a **Pull Request**.
+
+---
+
+## 📝 Content Guidelines
+
+To maintain the vault's high standards, please ensure all submissions adhere to these guidelines:
+- **Scrub Names**: Do not list names of instructors, candidates, or session leaders under headers or metadata.
+- **Focus on Trade-offs**: Emphasize architectural trade-offs, scaling limits, and complexities rather than basic syntax.
+- **Escape Special Characters**: If you are writing raw MDX outside of code blocks, make sure to escape braces (`\{` and `\}`) and unclosed tags (`<` to `&lt;`) so the compiler does not fail.
+- **Code Syntax**: Use fenced code blocks with language specifiers (e.g. ````python` or ````java`) for all snippets.
+- **Scanning Quality**: Use headings, bullet lists, and code blocks to make pages highly readable and scannable.

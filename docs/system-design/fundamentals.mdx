@@ -1,29 +1,46 @@
+---
+title: System Design Fundamentals
+sidebar_position: 1
+---
+
 # System Design Fundamentals
 
-System design interviews reward structured thinking more than memorized
-architecture diagrams.
+System design interviews reward structured thinking and deep tradeoff analysis more than memorized architecture diagrams.
 
-## Interview flow
+## The Interview Workflow
 
-1. Clarify requirements.
-2. Estimate scale.
-3. Define APIs and data models.
-4. Sketch the high-level architecture.
-5. Identify bottlenecks.
-6. Discuss tradeoffs and failure modes.
+1. **Clarify Requirements**: Functional requirements, user volume, read/write ratios, geographic distribution.
+2. **Estimate Scale (Back-of-the-Envelope)**: Compute storage, memory bandwidth, network throughput, and QPS.
+3. **Define APIs and Data Models**: Specify endpoints (REST/GraphQL parameters) and schema definitions.
+4. **Sketch High-Level Architecture**: Draw stateless gateways, load balancers, application tiers, caches, and storage clusters.
+5. **Identify Bottlenecks & Scale**: Evaluate what fails if traffic increases 10x, and introduce sharding, replication, or queues.
+6. **Discuss Tradeoffs (CAP vs PACELC)**: Decide where to favor consistency over availability or latency.
 
-## Core concepts
+## Core System Architectures
 
-- Load balancing
-- Caching
-- Queues and asynchronous processing
-- Database indexing
-- Replication and sharding
-- Observability
+- **Load Balancing**: L4 vs L7 load balancers, DNS routing, and reverse proxies.
+- **Caching**: Cache-aside, write-through, write-behind, eviction policies (LRU, LFU), and cache stampedes.
+- **Queues and Async Processing**: Decoupling write-heavy paths with brokers (Kafka, RabbitMQ) and handling failures with DLQs.
+- **Databases**: Indexing (B-Trees, LSM-Trees), SQL vs NoSQL, sharding architectures, replication slots, and CDC.
 
-## Practice prompts
+---
 
-- Design a URL shortener.
-- Design a notification system.
-- Design a collaborative document editor.
-- Design a feed ranking service.
+## Stanford LLM & Transformers Playlist
+
+For advanced machine learning system designs and modern NLP model pipelines:
+- [Stanford CME295 Transformers & LLMs - Lecture 1 (Transformer)](https://www.youtube.com/watch?v=Ub3GoFaUcds)
+- [Stanford CME295 Transformers & LLMs - Lecture 2 (Transformer-Based Models & Tricks)](https://www.youtube.com/watch?v=yT84Y5zCnaA)
+
+---
+
+## Core Bookmarked Resources & Reads
+
+### System Design Handbooks
+- [donnemartin/system-design-primer](https://github.com/donnemartin/system-design-primer)
+- [binhnguyennus/awesome-scalability](https://github.com/binhnguyennus/awesome-scalability)
+
+### Tradeoff Analyses (Consistency vs Latency)
+- [Balancing Strong and Eventual Consistency with Datastore (Google Cloud)](https://cloud.google.com/datastore/docs/articles/balancing-strong-and-eventual-consistency-with-google-cloud-datastore)
+- [Why you should pick strong consistency, whenever possible (Google Cloud)](https://cloud.google.com/blog/products/databases/why-you-should-pick-strong-consistency-whenever-possible)
+- [10 Common Software Architectural Patterns in a nutshell](https://towardsdatascience.com/10-common-software-architectural-patterns-in-a-nutshell-a0b47a1e9013)
+- [Centralized vs Decentralized vs Distributed](https://medium.com/@bbc4468/centralized-vs-decentralized-vs-distributed-41d92d463868)

@@ -11,12 +11,11 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Coding Practice',
-    href: '/docs/category/coding-practice',
+    title: 'Data Structures',
+    href: '/docs/category/data-structures',
     description: (
       <>
-        Patterns, problem walkthroughs, complexity notes, and interview-ready
-        explanations.
+        Complexity cheat sheets, bit manipulation hacks, graphs, and Blind Top 75 walkthroughs.
       </>
     ),
   },
@@ -25,7 +24,7 @@ const FeatureList: FeatureItem[] = [
     href: '/docs/category/system-design',
     description: (
       <>
-        Scalable architecture primers, tradeoff checklists, and design prompts.
+        Scalable architecture patterns, real-world case studies, concepts, and tradeoff matrices.
       </>
     ),
   },
@@ -34,7 +33,34 @@ const FeatureList: FeatureItem[] = [
     href: '/docs/category/behavioral-prep',
     description: (
       <>
-        STAR story templates, leadership examples, and structured reflection.
+        STAR stories, leadership principles, conflict resolution, and behavioral frameworks.
+      </>
+    ),
+  },
+  {
+    title: 'AI/ML',
+    href: '/docs/category/ai-ml',
+    description: (
+      <>
+        Machine learning systems design, core ML/DL concepts, and artificial intelligence roadmaps.
+      </>
+    ),
+  },
+  {
+    title: 'TPM',
+    href: '/docs/category/tpm',
+    description: (
+      <>
+        Technical Program Management metrics, execution strategies, system delivery, and cross-functional leadership.
+      </>
+    ),
+  },
+  {
+    title: 'Interview and Beyond',
+    href: '/docs/category/interview-and-beyond',
+    description: (
+      <>
+        Mock interview platforms, company guides (Google, Meta, OpenAI), salary negotiation, and career development.
       </>
     ),
   },

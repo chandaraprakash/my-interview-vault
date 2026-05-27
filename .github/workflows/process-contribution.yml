@@ -1,0 +1,85 @@
+name: Process Contribution
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  process:
+    name: Process Contribution Issue
+    if: contains(github.event.issue.labels.*.name, 'contribution')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Save Issue Body
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+        run: |
+          echo "$ISSUE_BODY" > issue_body.md
+
+      - name: Parse Contribution
+        run: |
+          python3 scratch/parse_contribution.py issue_body.md
+
+      - name: Create Pull Request
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          # Locate the parsed contribution file
+          FILE_PATH=$(find submissions -type f -name "*.mdx" | head -n 1)
+          if [ -z "$FILE_PATH" ]; then
+            echo "Error: No parsed mdx file found in submissions directory."
+            exit 1
+          fi
+
+          # Extract file name and clean title for PR description
+          FILE_NAME=$(basename "$FILE_PATH")
+          CLEAN_TITLE=$(basename "$FILE_PATH" .mdx | tr '-' ' ' | awk '{for(i=1;i<=NF;i++)sub(/./,toupper(substr($i,1,1)),$i)}1')
+
+          # Configure Git
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # Create a new branch for the suggestion
+          BRANCH_NAME="contrib/issue-${ISSUE_NUMBER}"
+          git checkout -b "$BRANCH_NAME"
+
+          # Stage and commit the contribution file
+          git add "$FILE_PATH"
+          git commit -m "Add contribution: ${CLEAN_TITLE} (Issue #${ISSUE_NUMBER})"
+
+          # Push the branch to origin
+          git push origin "$BRANCH_NAME"
+
+          # Create the Pull Request using GitHub CLI
+          PR_URL=$(gh pr create \
+            --title "Contribution: ${CLEAN_TITLE}" \
+            --body "This PR was automatically created from contribution issue #${ISSUE_NUMBER}. Review and merge to import the content into the vault." \
+            --head "$BRANCH_NAME" \
+            --base main)
+
+          # Pass PR_URL to subsequent steps via environment
+          echo "PR_URL=$PR_URL" >> $GITHUB_ENV
+
+      - name: Comment and Close Issue
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          gh issue comment "$ISSUE_NUMBER" --body "Thank you for your contribution! We have created a Pull Request to review and merge your content: ${{ env.PR_URL }}. This issue will now be closed."
+          gh issue close "$ISSUE_NUMBER"

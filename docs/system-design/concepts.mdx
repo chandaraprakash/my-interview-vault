@@ -1,0 +1,119 @@
+---
+title: Concepts & Building Blocks
+sidebar_position: 2
+---
+
+# Concepts & Building Blocks
+
+Understanding core architectural primitives is essential to navigating trade-offs under scale, network partitions, and latency requirements.
+
+---
+
+## CAP vs PACELC Theorem
+
+In a distributed data store, trade-offs between consistency, availability, and latency are fundamental and dictated by network physical constraints.
+
+PACELC - In the case of a network partition (P), the system has to choose between availability (A) and consistency (C) but else (E), when the system operates normally in the absence of network partitions, the system has to choose between latency (L) and consistency (C).
+
+---
+
+## DNS Lookup Walkthrough
+
+Resolving a human-readable domain name into an IP address involves traversing several routing and caching layers across the global internet.
+
+**The 8 steps in a DNS lookup:**
+
+1. A user types ‘example.com’ into a web browser and the query travels into the Internet and is received by a DNS recursive resolver.
+2. The resolver then queries a DNS root nameserver (.).
+3. The root server then responds to the resolver with the address of a Top Level Domain (TLD) DNS server (such as .com or .net), which stores the information for its domains. When searching for example.com, our request is pointed toward the .com TLD.
+4. The resolver then makes a request to the .com TLD.
+5. The TLD server then responds with the IP address of the domain’s nameserver, example.com.
+6. Lastly, the recursive resolver sends a query to the domain’s nameserver.
+7. The IP address for example.com is then returned to the resolver from the nameserver.
+8. The DNS resolver then responds to the web browser with the IP address of the domain requested initially. 
+Once the 8 steps of the DNS lookup have returned the IP address for example.com, the browser is able to make the request for the web page:
+9. The browser makes a [HTTP](https://www.cloudflare.com/learning/ddos/glossary/hypertext-transfer-protocol-http/) request to the IP address.
+10. The server at that IP returns the webpage to be rendered in the browser (step 10).
+
+![DNS Lookup Diagram](/img/system-design/dns-lookup.png)
+
+---
+
+## Curated Systems Design Resource Directory
+
+| Concept / Tech Topic | Curated Resource Link | Notes |
+| :--- | :--- | :--- |
+| Concept / Tech Topic | Curated Resource Link | Notes |
+| :--- | :--- | :--- |
+
+
+---
+
+## Deep-Dive Illustrations
+
+| Topic / Illustrated Pattern | Reference Link |
+| :--- | :--- |
+| Deep-Dive Illustration Topic | Illustrated Resource Link |
+| :--- | :--- |
+| **Idempotent API** | [Visual/Article Link](https://lnkd.in/erMkqwq4) |
+| **Redis Use Cases** | [Visual/Article Link](https://lnkd.in/ekJMjMG3) |
+| **Saga Design Pattern Explained** | [Visual/Article Link](https://lnkd.in/eFXC4-aJ) |
+| **Protocol Buffers vs JSON** | [Visual/Article Link](https://lnkd.in/egcFxe2t) |
+| **Concurrency vs Parallelism** | [Visual/Article Link](https://lnkd.in/e9PHuw2e) |
+| **How Consistent Hashing Works** | [Visual/Article Link](https://lnkd.in/eUP9DbCg) |
+| **Service Discovery Explained** | [Visual/Article Link](https://lnkd.in/eCYYwQfU) |
+| **Monolith vs Microservices Architecture** | [Visual/Article Link](https://lnkd.in/e3EBtg_v) |
+| **What Happens When You Type a URL Into Your Browser** | [Visual/Article Link](https://lnkd.in/eusuDn5z) |
+| **How Databases Keep Passwords Securely** | [Visual/Article Link](https://lnkd.in/edd8-N5k) |
+| **How API Gateway Works** | [Visual/Article Link](https://lnkd.in/eMCr9VjE) |
+| **Modular Monolith Architecture** | [Visual/Article Link](https://lnkd.in/edUqkCKR) |
+| **Bloom Filters Explained** | [Visual/Article Link](https://lnkd.in/e2duES7s) |
+| **Microservices Lessons From Netflix** | [Visual/Article Link](https://lnkd.in/eZSM3CRB) |
+
+
+---
+
+## Brain Foods & Articles for Engineers
+
+High-signal articles and case studies on scaling engineering careers and modern infrastructure:
+- [How Shopify Handles 67M Daily Views](https://lnkd.in/die4gfyf)
+- [How Reddit Scaled To Handle 100M Daily Users (by Neo)](https://lnkd.in/dKTx9PfG)
+- [The Ultimate Guide To Stay Technical As An Engineering Manager](https://lnkd.in/dAK8EqNa)
+- [The Staff to Principal Playbook (by Dr Milan Milanović)](https://lnkd.in/djp2jSPY)
+- [Learn These 5 Communication Levels To Accelerate Your Career (by Jordan)](https://lnkd.in/dvMreuAa)
+- [How to Measure AI Impact In Engineering (by Gregor)](https://lnkd.in/dVxN8q5Q)
+- [The Truth About 9-5 vs Self-Employment No One Tells You (by Kevin)](https://lnkd.in/diXa6Y9J)
+- [10 Critical Engineering Terms Illustrated (by Francisco)](https://lnkd.in/dDEAnf7i)
+- [Free AI Code Reviews With 1 Extension](https://fnf.dev/3I7Hsga)
+- [Bloom Filters by Example](https://lnkd.in/d7tUa3y2)
+- [How Amazon S3 Achieves Strong Consistency (by Neo)](https://lnkd.in/dxkTqJcz)
+- [What Is GeoHashing? (by Ashish)](https://lnkd.in/dy6dB7b6)
+- [The Art And Science Of Context Engineering](https://fnf.dev/4feWkWg)
+- [Your Step-By-Step Guide To Engineering Growth](https://lnkd.in/d8DeUmNU)
+- [5 Books That Changed My Engineering Career Forever (by Dr Milan)](https://lnkd.in/dA6Xghyi)
+- [Companies Should Hire More Engineers In The Age Of AI (by Gregor)](https://lnkd.in/dDqez7r7)
+- [You Only Need 4 Promotions (by Francisco)](https://lnkd.in/d55dWi4S)
+- [It's Time For Modern CSS To Kill The SPA](https://lnkd.in/d9V-jrim)
+- [Never Write Your Own Date Parsing Library](https://lnkd.in/dNnDdPnB)
+- [Six Principles For Production AI Agents](https://lnkd.in/dGTVN38r)
+
+---
+
+## Useful GitHub Repositories & Guides
+
+- [System design](https://lnkd.in/e7SUQ3ei)
+- [Public APIs](https://lnkd.in/epWSyzqs)
+- [Tech interview handbook](https://lnkd.in/e7EjsJNF)
+- [Coding interview university](https://lnkd.in/evJSNCPE)
+- [Engineering leadership](https://lnkd.in/ePCzV3zF)
+- [Free programming books](https://lnkd.in/eXAzAJ3M)
+- [Path to senior engineer handbook](https://lnkd.in/exkJCxVi)
+- [Developer roadmaps](https://lnkd.in/e9MuB_Yg)
+- [Freecodecamp](https://lnkd.in/e_4pA8xV)
+
+---
+
+## Distributed Systems Glossary Topics
+
+- **Covering Indexes**: Database indexes that contain all fields requested in a query, allowing the database engine to return results purely from the index structure without fetching from the heap table.
+- **Transactional Outbox**: An architectural pattern that ensures reliable message publishing in microservices by writing events to an `outbox` table in the same database transaction as the business operation, and tailing the database WAL/log to push events to message brokers asynchronously.

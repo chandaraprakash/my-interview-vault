@@ -1,5 +1,5 @@
-import {themes as prismThemes} from 'prism-react-renderer';
-import type {Config} from '@docusaurus/types';
+import { themes as prismThemes } from 'prism-react-renderer';
+import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
@@ -48,12 +48,16 @@ const config: Config = {
         theme: {
           customCss: './src/css/custom.css',
         },
+        gtag: {
+          trackingID: 'G-TLPZNJWN0M',
+          anonymizeIP: true,
+        },
       } satisfies Preset.Options,
     ],
   ],
 
   themeConfig: {
-    image: 'img/logo.svg',
+    image: 'img/logo.png',
     colorMode: {
       respectPrefersColorScheme: true,
     },
@@ -61,7 +65,7 @@ const config: Config = {
       title: 'My Interview Vault',
       logo: {
         alt: 'My Interview Vault Logo',
-        src: 'img/logo.svg',
+        src: 'img/logo.png',
       },
       items: [
         {
@@ -88,12 +92,28 @@ const config: Config = {
               to: '/docs/intro',
             },
             {
-              label: 'Coding practice',
-              to: '/docs/category/coding-practice',
+              label: 'Data Structures',
+              to: '/docs/category/data-structures',
             },
             {
-              label: 'System design',
+              label: 'System Design',
               to: '/docs/category/system-design',
+            },
+            {
+              label: 'Behavioral Prep',
+              to: '/docs/category/behavioral-prep',
+            },
+            {
+              label: 'AI/ML',
+              to: '/docs/category/ai-ml',
+            },
+            {
+              label: 'TPM',
+              to: '/docs/category/tpm',
+            },
+            {
+              label: 'Interview and Beyond',
+              to: '/docs/category/interview-and-beyond',
             },
           ],
         },

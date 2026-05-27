@@ -3,6 +3,7 @@
   "position": 3,
   "link": {
     "type": "generated-index",
+    "slug": "/category/system-design",
     "description": "Architecture concepts, scalability tradeoffs, and design prompts."
   }
 }

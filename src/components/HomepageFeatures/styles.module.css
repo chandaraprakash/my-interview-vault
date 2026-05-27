@@ -8,23 +8,39 @@
 .featureLink {
   color: var(--ifm-font-color-base);
   display: block;
-  height: 100%;
-  padding: 1.5rem;
+  height: calc(100% - 2rem);
+  padding: 2rem 1.75rem;
   border: 1px solid var(--ifm-color-emphasis-200);
-  border-radius: 8px;
+  border-radius: 12px;
   text-decoration: none;
+  background: var(--ifm-background-surface-color, rgba(255, 255, 255, 0.02));
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  margin-bottom: 2rem;
   transition:
-    border-color 160ms ease,
-    transform 160ms ease;
+    border-color 200ms ease,
+    box-shadow 200ms ease,
+    transform 200ms ease;
 }
 
 .featureLink:hover {
   border-color: var(--ifm-color-primary);
   color: var(--ifm-font-color-base);
   text-decoration: none;
-  transform: translateY(-2px);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.featureLink h3 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  font-size: 1.25rem;
+  color: var(--ifm-color-primary);
 }
 
 .featureLink p {
   margin-bottom: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--ifm-font-color-base);
+  opacity: 0.85;
 }

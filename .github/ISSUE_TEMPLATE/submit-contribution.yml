@@ -1,0 +1,46 @@
+name: Submit a Contribution
+description: Suggest a new interview preparation guide or content update.
+title: "[Contribution]: "
+labels: ["contribution"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for contributing to My Interview Vault! Please fill out the form below. Your suggestion will be processed by our automated pipeline and created as a Pull Request for review.
+  - type: input
+    id: title
+    attributes:
+      label: Document Title
+      description: The user-friendly title of the guide (e.g. "Breadth-First Search Patterns").
+      placeholder: e.g. Breadth-First Search Patterns
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      description: Select the main category this guide belongs to.
+      options:
+        - data-structures
+        - system-design
+        - behavioral
+        - ai-ml
+        - tpm
+        - interview-and-beyond
+    validations:
+      required: true
+  - type: textarea
+    id: content
+    attributes:
+      label: Content
+      description: Paste your Markdown/MDX content here.
+      placeholder: |
+        # Guide Title
+        Write your content here...
+    validations:
+      required: true
+  - type: input
+    id: submitter
+    attributes:
+      label: Submitter Name / GitHub Username
+      placeholder: e.g. octocat
